@@ -1,30 +1,67 @@
 body {
+    margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background-color: #F5ECD5;
-    color: #626F47;
-    padding: 40px;
-    max-width: 600px;
-    margin: auto;
+    color: #626F47
+    
 }
 
-h1 {
-    color: #A4B465;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A4B465;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap; 
 }
 
-p {
-    background-color: white;
-    padding: 10px;
-    border-left: 5px solid #A4B465;
-    margin-top: 10px;
-    border-radius: 4px;
+.navbar-left span {
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-a {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: #F0BB78;
-    padding: 10px 20px;
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar-right a {
+    color: black;             
+    text-decoration: none;    
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar-right a:hover {
     color: white;
     text-decoration: none;
-    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.content {
+    padding: 40px;
+}
+
+.seller-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    object-fit: contain;
 }
