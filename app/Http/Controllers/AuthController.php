@@ -19,23 +19,24 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        $credentials = $request->only('email', 'password');
+    $credentials = $request->only('email', 'password');
+    $remember = $request->has('remember'); // checkbox işaretli mi kontrol et
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
+    if (Auth::attempt($credentials, $remember)) {
+        $user = Auth::user();
 
-            if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard')->with('success', 'Admin sayfasına hoş geldiniz!');
-            } else {
-                return redirect()->route('user.dashboard')->with('success', 'Kullanıcı sayfasına hoş geldiniz!');
-            }
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard')->with('success', 'Admin sayfasına hoş geldiniz!');
+        } else {
+            return redirect()->route('user.dashboard')->with('success', 'Kullanıcı sayfasına hoş geldiniz!');
         }
+    }
 
-        return back()->withErrors(['email' => 'Geçersiz giriş bilgileri'])->withInput();
+    return back()->withErrors(['email' => 'Geçersiz giriş bilgileri'])->withInput();
     }
 
     // Kayıt formunu göster
