@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Giriş Yap</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
     <h2>Giriş Ekranı</h2>

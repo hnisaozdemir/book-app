@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="{{ asset('css/admindashboard.css') }}">
 </head>
 <body>
     <h1>Seller Paneline Hoş Geldiniz</h1>

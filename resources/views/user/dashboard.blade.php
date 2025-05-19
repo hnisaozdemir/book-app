@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ asset('css/userdashboard.css') }}">
 </head>
 <body>
     <h1>User Paneline Hoş Geldiniz</h1>

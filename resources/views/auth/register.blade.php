@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Kayıt Ol</title>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
 <body>
     <h2>Kayıt Ol</h2>
