@@ -22,3 +22,5 @@ Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashb
 Route::get('/products', [UserController::class, 'products'])->name('user.products');
 Route::get('/products/{id}', [UserController::class, 'showProduct'])->name('user.products.show');
 Route::post('/cart/add/{id}', [UserController::class, 'addToCart'])->name('user.cart.add');
+
+Route::get('/user/cart', [UserController::class, 'cart'])->name('user.cart');

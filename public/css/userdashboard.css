@@ -162,3 +162,43 @@ h2 {
 .btn-view:hover {
     background-color: #1769aa;
 }
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.btn-group {
+    margin-top: 15px;
+}
+/* product_show.blade.php içindeki container */
+.product-detail-container {
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center; /* Ortala */
+}
+
+/* product_show.blade.php içindeki resim */
+.product-detail-container img {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto 15px; /* Üst boşluk yok, alt boşluk 15px */
+    display: block; /* Block yap, margin auto çalışsın */
+}

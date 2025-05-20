@@ -9,10 +9,10 @@
     <nav class="navbar">
         <div class="navbar-left">
             <img src="{{ asset('images/seller-icon.png') }}" alt="Kullanıcı ikonu" class="seller-icon">
-            <span>Hoş geldiniz, Kullanıcı XX</span>
+            <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
         </div>
         <div class="navbar-right">
-            <a href="#"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
+            <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
             <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
         </div>
     </nav>
@@ -28,7 +28,6 @@
         <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
         <div class="product-info">
             <h3>{{ $product->name }}</h3>
-            <p>{{ Str::limit($product->description, 100) }}</p>
             <p><strong>{{ number_format($product->price, 2) }} ₺</strong></p>
             <div class="btn-group">
         <form action="{{ route('user.cart.add', $product->id) }}" method="POST" style="display:inline;">
