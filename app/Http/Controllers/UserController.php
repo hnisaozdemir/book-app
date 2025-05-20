@@ -30,27 +30,26 @@ public function showProduct($id)
 
 
     // Sepete ekleme işlemi
-    public function addToCart(Request $request, $id)
-    {
-        $product = Product::findOrFail($id);
+public function addToCart(Request $request, $id)
+{
+    $product = Product::findOrFail($id);
 
-        $cart = session()->get('cart', []);
+    $cart = session()->get('cart', []);
 
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->name,
-                "quantity" => 1,
-                "price" => $product->price,
-                "image" => $product->image
-            ];
-        }
-
-        session()->put('cart', $cart);
-
-        return redirect()->back()->with('success', "{$product->name} sepete eklendi.");
+    if(isset($cart[$id])) {
+        return redirect()->route('user.cart')->with('message', 'Bu ürün zaten sepete eklenmiş.');
+    } else {
+        $cart[$id] = [
+            "name" => $product->name,
+            "price" => $product->price,
+            "image" => $product->image
+        ];
     }
+
+    session()->put('cart', $cart);
+
+    return redirect()->route('user.cart')->with('message', "{$product->name} sepete eklendi.");
+}
 
     public function cart()
 {

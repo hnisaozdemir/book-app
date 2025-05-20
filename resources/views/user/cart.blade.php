@@ -5,6 +5,12 @@
     <link rel="stylesheet" href="{{ asset('css/userdashboard.css') }}">
 </head>
 <body>
+@if (session('message'))
+    <div style="background-color: #d4edda; padding: 10px; margin-bottom: 15px; border: 1px solid #c3e6cb; color: #155724;">
+        {{ session('message') }}
+    </div>
+@endif
+
     <nav class="navbar">
         <div class="navbar-left">
             <img src="{{ asset('images/seller-icon.png') }}" alt="Kullanıcı ikonu" class="seller-icon">
@@ -16,6 +22,8 @@
         </div>
     </nav>
 
+
+
     <h2>Sepetiniz</h2>
 
     @if(count($cart) == 0)
@@ -25,27 +33,21 @@
             <thead>
                 <tr>
                     <th>Ürün</th>
-                    <th>Adet</th>
-                    <th>Birim Fiyat</th>
-                    <th>Toplam</th>
+                    <th>Fiyat</th>
                 </tr>
             </thead>
             <tbody>
-                @php $total = 0; @endphp
                 @foreach($cart as $id => $details)
-                    @php $subtotal = $details['price'] * $details['quantity']; @endphp
                     <tr>
                         <td>{{ $details['name'] }}</td>
-                        <td>{{ $details['quantity'] }}</td>
                         <td>{{ number_format($details['price'], 2) }} ₺</td>
-                        <td>{{ number_format($subtotal, 2) }} ₺</td>
                     </tr>
-                    @php $total += $subtotal; @endphp
                 @endforeach
             </tbody>
         </table>
-
-        <h3>Genel Toplam: {{ number_format($total, 2) }} ₺</h3>
     @endif
+
+    <a href="{{ route('user.dashboard') }}" class="btn btn-view" style="margin-top: 20px; display: inline-block;">Geri Dön</a>
+
 </body>
 </html>

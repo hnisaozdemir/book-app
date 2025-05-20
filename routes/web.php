@@ -24,3 +24,5 @@ Route::get('/products/{id}', [UserController::class, 'showProduct'])->name('user
 Route::post('/cart/add/{id}', [UserController::class, 'addToCart'])->name('user.cart.add');
 
 Route::get('/user/cart', [UserController::class, 'cart'])->name('user.cart');
+Route::get('/sepet', [UserController::class, 'cart'])->name('user.cart');
+
