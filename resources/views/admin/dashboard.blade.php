@@ -4,15 +4,6 @@
     <meta charset="UTF-8">
     <title>Satıcı Paneli</title>
     <link rel="stylesheet" href="{{ asset('css/admindashboard.css') }}">
-    <style>
-        .nav-icon {
-            width: 18px;
-            height: 18px;
-            margin-right: 6px;
-            vertical-align: middle;
-            object-fit: contain;
-        }
-    </style>
 </head>
 <body>
 
