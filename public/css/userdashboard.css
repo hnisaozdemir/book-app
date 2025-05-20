@@ -202,3 +202,91 @@ h2 {
     margin: 0 auto 15px; /* Üst boşluk yok, alt boşluk 15px */
     display: block; /* Block yap, margin auto çalışsın */
 }
+/* --- SEPET KART TASARIMI --- */
+.cart-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cart-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4a5320;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FAF9F6;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    gap: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.cart-item:hover {
+    transform: scale(1.01);
+}
+
+.cart-item img {
+    width: 100px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #374220;
+}
+
+.cart-item-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.cart-item-price {
+    font-weight: bold;
+    font-size: 16px;
+    color: #626F47;
+}
+
+/* --- SİL BUTONU --- */
+.btn-delete {
+    background-color: #e74c3c; /* Kırmızı tonunda arka plan */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* --- SEPET BOŞSA GÖRÜNTÜ --- */
+.empty-cart {
+    text-align: center;
+    color: #999;
+    font-size: 18px;
+    margin-top: 50px;
+}

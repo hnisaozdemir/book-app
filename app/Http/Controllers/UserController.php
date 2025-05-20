@@ -29,32 +29,6 @@ public function showProduct($id)
 }
 
 
-    // Sepete ekleme işlemi
-public function addToCart(Request $request, $id)
-{
-    $product = Product::findOrFail($id);
 
-    $cart = session()->get('cart', []);
-
-    if(isset($cart[$id])) {
-        return redirect()->route('user.cart')->with('message', 'Bu ürün zaten sepete eklenmiş.');
-    } else {
-        $cart[$id] = [
-            "name" => $product->name,
-            "price" => $product->price,
-            "image" => $product->image
-        ];
-    }
-
-    session()->put('cart', $cart);
-
-    return redirect()->route('user.cart')->with('message', "{$product->name} sepete eklendi.");
-}
-
-    public function cart()
-{
-    $cart = session()->get('cart', []);
-    return view('user.cart', compact('cart'));
-}
 
 }

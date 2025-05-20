@@ -9,6 +9,10 @@ class Cart extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'product_id', 'quantity', 'added_at'];
+
+    public $timestamps = false; // Eğer created_at ve updated_at yoksa
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,4 +23,3 @@ class Cart extends Model
         return $this->belongsTo(Product::class);
     }
 }
-?>
