@@ -23,21 +23,30 @@
     </div>
 </nav>
 
-<h2>Adres Bilgisi</h2>
+<h2 class="form-title">Adres Bilgileri</h2>
 
-<form method="POST" action="{{ route('user.address.save') }}" style="max-width: 600px;">
-    @csrf
-    <div>
-        <label for="address">Adresiniz:</label><br>
-        <textarea id="address" name="address" rows="5" style="width:100%;" required>{{ old('address', $user->address) }}</textarea>
-        @error('address')
-            <div style="color:red;">{{ $message }}</div>
-        @enderror
-    </div>
-    <button type="submit" style="margin-top: 15px;">Kaydet ve Ödeme Sayfasına Geç</button>
-</form>
 
-<a href="{{ route('user.cart') }}" class="btn btn-view" style="margin-top: 20px; display: inline-block;">Sepete Geri Dön</a>
+<div class="form-container">
+    <form method="POST" action="{{ route('user.address.save') }}">
+        @csrf
+        <div>
+            <label for="address">Adresiniz:</label>
+            <textarea id="address" name="address" rows="5" required>{{ old('address', $user->address) }}</textarea>
+            @error('address')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="btn-container">
+            <a href="{{ route('user.cart') }}" class="btn btn-view">Sepete Geri Dön</a>
+            <button type="submit" class="btn btn-primary">Adresi Kaydet</button>
+            <a href="{{ route('user.checkout') }}" class="btn btn-secondary">Ödeme Sayfasına Geç</a>
+        </div>
+    </form>
+</div>
+</div>
+
+
 
 </body>
 </html>

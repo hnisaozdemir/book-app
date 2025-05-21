@@ -22,35 +22,43 @@
     </div>
 </nav>
 
-<h2>Satın Alma Bilgileri</h2>
+<h2 class="form-title">Satın Alma Bilgileri</h2>
 
-<form action="{{ route('user.purchase.confirm') }}" method="POST" style="max-width: 400px;">
-    @csrf
-    <div>
-        <label for="card_number">Kart Numarası</label><br>
-        <input type="text" id="card_number" name="card_number" maxlength="16" required value="{{ old('card_number') }}">
-        @error('card_number')
-            <div style="color:red;">{{ $message }}</div>
-        @enderror
-    </div>
-    <div>
-        <label for="expiry_date">Son Kullanma Tarihi (MM/YY)</label><br>
-        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required value="{{ old('expiry_date') }}">
-        @error('expiry_date')
-            <div style="color:red;">{{ $message }}</div>
-        @enderror
-    </div>
-    <div>
-        <label for="cvv">CVV</label><br>
-        <input type="text" id="cvv" name="cvv" maxlength="3" required value="{{ old('cvv') }}">
-        @error('cvv')
-            <div style="color:red;">{{ $message }}</div>
-        @enderror
-    </div>
-    <button type="submit" style="margin-top: 15px;">Siparişi Onayla</button>
-</form>
+<div class="form-container">
+    <form action="{{ route('user.purchase.confirm') }}" method="POST">
+        @csrf
+        <div>
+            <label for="card_number">Kart Numarası</label>
+            <input type="text" id="card_number" name="card_number" maxlength="16" required value="{{ old('card_number') }}">
+            @error('card_number')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
 
-<a href="{{ route('user.cart') }}" class="btn btn-view" style="margin-top: 20px; display: inline-block;">Geri Dön</a>
+        <div>
+            <label for="expiry_date">Son Kullanma Tarihi (MM/YY)</label>
+            <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required value="{{ old('expiry_date') }}">
+            @error('expiry_date')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" maxlength="3" required value="{{ old('cvv') }}">
+            @error('cvv')
+                <div style="color:red;">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="btn-container">
+            <button type="submit" class="btn btn-primary">Siparişi Onayla</button>
+            <a href="{{ route('user.cart') }}" class="btn btn-secondary">Vazgeç</a>
+        </div>
+    </form>
+</div>
+
+
 
 </body>
 </html>
