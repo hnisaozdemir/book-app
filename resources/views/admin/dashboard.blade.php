@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>Satıcı Paneli</title>
     <link rel="stylesheet" href="{{ asset('css/admindashboard.css') }}">
+   
 </head>
 <body>
 
     <nav class="navbar">
         <div class="navbar-left">
             <img src="{{ asset('images/seller-icon.png') }}" alt="Satıcı İkonu" class="seller-icon">
-            <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+           <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+
         </div>
         <div class="navbar-right">
             <a href="#">Satıştaki Kitaplar</a>
@@ -30,9 +32,14 @@
                         <p>{{ $product->description }}</p>
                         <p class="product-price">{{ number_format($product->price, 2) }} ₺</p>
                         <div class="btn-group">
-                            <button class="btn btn-update" disabled>Güncelle</button>
-                            <button class="btn btn-delete" disabled>Sil</button>
+                            <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-update">Güncelle</a>
+                            <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Emin misiniz?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-delete">Sil</button>
+</form>
                         </div>
+                        
                     </div>
                 </div>
             @endforeach
@@ -71,5 +78,17 @@
             }
         });
     </script>
+    <script>
+    function toggleUpdateForm(id) {
+        const form = document.getElementById('updateForm-' + id);
+        if (form.style.display === 'block') {
+            form.style.display = 'none';
+        } else {
+            form.style.display = 'block';
+            form.scrollIntoView({behavior: 'smooth'});
+        }
+    }
+</script>
+
 </body>
 </html>

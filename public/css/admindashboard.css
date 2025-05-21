@@ -88,7 +88,13 @@ body {
     width: 220px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Varsa sabit yükseklik kaldır */
+    overflow: hidden; /* taşmayı engelle */
+    word-wrap: break-word; /* uzun kelimeleri böl */
 }
+
 
 .product-card img {
     width: 100%;
@@ -197,5 +203,5 @@ body {
     color: white;
     padding: 10px;
     margin-bottom: 15px;
-    border-radius: 3px;
+    border-radius: 3px;
 }

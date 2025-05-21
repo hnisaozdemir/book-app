@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -28,6 +28,23 @@ public function showProduct($id)
     return view('product.product_show', compact('product'));
 }
 
+public function showAddressForm()
+{
+    $user = Auth::user();
+    return view('user.address', compact('user'));
+}
+public function saveAddress(Request $request)
+{
+    $request->validate([
+        'address' => 'required|string|max:1000',
+    ]);
+
+    $user = Auth::user();
+    $user->address = $request->address;
+    $user->save();
+
+    return redirect()->route('user.checkout')->with('message', 'Adresiniz kaydedildi.');
+}
 
 
 

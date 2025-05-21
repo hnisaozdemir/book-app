@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -75,21 +76,45 @@ class CartController extends Controller
     }
 
     // Satın alma işlemi onayı
-    public function confirmPurchase(Request $request)
-    {
-        $request->validate([
-            'card_number' => 'required|digits:16',
-            'expiry_date' => 'required|date_format:m/y',
-            'cvv' => 'required|digits:3',
-        ]);
+public function confirmPurchase(Request $request)
+{
+    $request->validate([
+        'card_number' => 'required|digits:16',
+        'expiry_date' => ['required', 'regex:/^(0[1-9]|1[0-2])\/\d{2}$/'], // MM/YY
+        'cvv' => 'required|digits:3',
+    ]);
 
-        $userId = Auth::id();
+    $user = Auth::user();
 
-        // Ödeme işlemi (simülasyon)
+    $cartItems = $user->cartItems()->with('product')->get();
 
-        // Satın alma sonrası sepeti temizle
-        Cart::where('user_id', $userId)->delete();
-
-        return redirect()->route('user.dashboard')->with('message', 'Satın alma işlemi başarıyla tamamlandı. Teşekkürler!');
+    if ($cartItems->isEmpty()) {
+        return redirect()->route('user.cart')->with('message', 'Sepetiniz boş.');
     }
+
+    DB::beginTransaction();
+    try {
+        // Burada gerçek ödeme entegrasyonu yapılabilir (şimdilik simülasyon)
+
+        foreach ($cartItems as $item) {
+            if ($item->product) {
+                $item->product->is_sold = 1;
+                $item->product->save();
+            }
+        }
+
+        // Sepeti temizle
+        $user->cartItems()->delete();
+
+        DB::commit();
+
+        return redirect()->route('user.dashboard')->with('message', 'Ödeme başarılı, teşekkürler!');
+
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('message', 'Ödeme sırasında bir hata oluştu: ' . $e->getMessage());
+    }
+}
+
 }

@@ -46,7 +46,7 @@
             </div>
         @endforeach
 
-        <a href="{{ route('user.checkout') }}" class="btn btn-primary" style="margin-top: 20px;">Sepeti Onayla</a>
+        <a href="{{ route('user.address') }}" class="btn btn-confirm">Siparişi Onayla</a>
     @endif
 
     <a href="{{ route('user.dashboard') }}" class="btn btn-view" style="margin-top: 15px;">Geri Dön</a>

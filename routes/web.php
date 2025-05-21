@@ -18,7 +18,12 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.su
 
 // Admin Paneli
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/product/edit/{id}', [AdminController::class, 'edit'])->name('admin.product.edit');
 Route::post('/admin/product/store', [AdminController::class, 'store'])->name('admin.product.store');
+Route::put('/admin/product/update/{id}', [AdminController::class, 'update'])->name('admin.product.update');
+Route::delete('/admin/product/delete/{id}', [AdminController::class, 'destroy'])->name('admin.product.delete');
+
+
 
 // Kullanıcı Paneli
 Route::middleware(['auth'])->group(function () {
@@ -28,8 +33,15 @@ Route::middleware(['auth'])->group(function () {
 
     // Sepet İşlemleri
     Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('user.cart.add');
-    Route::get('/cart', [CartController::class, 'cart'])->name('user.cart');  // Sepeti gösterir
+    Route::get('/cart', [CartController::class, 'cart'])->name('user.cart');
     Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('user.cart.remove');
+
+    // Admin Ürün Güncelleme (Not: Admin'e özelse middleware ayrıştırabilirsin)
+    Route::post('/admin/product/update/{id}', [AdminController::class, 'update'])->name('admin.product.update');
+
+    // Adres Bilgisi
+Route::get('/address', [UserController::class, 'showAddressForm'])->name('user.address');
+Route::post('/address', [UserController::class, 'saveAddress'])->name('user.address.save');
 
     // Satın Alma İşlemleri
     Route::get('/checkout', [CartController::class, 'checkout'])->name('user.checkout');
