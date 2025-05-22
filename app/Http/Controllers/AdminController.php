@@ -72,7 +72,29 @@ public function edit($id)
     $product = Product::findOrFail($id);
     return view('admin.edit', compact('product'));
 }
+// Satıştaki kitapları göster (is_sold = 0)
+    public function showAvailableBooks()
+    {
+        $products = Product::where('is_sold', 0)->get();
+        return view('admin.available_books', compact('products'));
+    }
 
-
+    // Satılan kitapları göster (is_sold = 1)
+    public function showSoldBooks()
+    {
+        $products = Product::where('is_sold', 1)->get();
+        return view('admin.sold_books', compact('products'));
+    }
+public function create()
+{
+    return view('admin.products.create'); // Blade dosyanın yoluna göre ayarla
+}
+ 
+public function earnings()
+{
+    $soldProducts = Product::where('is_sold', 1)->get();
+    $totalEarnings = $soldProducts->sum('price');
+    return view('admin.earnings', compact('soldProducts', 'totalEarnings'));
+}
 
 }

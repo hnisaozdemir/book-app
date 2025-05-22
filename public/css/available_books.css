@@ -1,0 +1,183 @@
+/* Genel ayarlar */
+body {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #F5ECD5;
+    color:  #626F47;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #90a369;
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .seller-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.navbar .navbar-left span {
+    font-size: 16px;
+    color: black;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.navbar .nav-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+
+/* İçerik Alanı */
+.content {
+    padding: 40px 30px;
+}
+
+/* Kitap Listesi */
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: flex-start;
+}
+
+/* Kitap Kartı */
+.book-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: 220px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(98, 111, 71, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(98, 111, 71, 0.3);
+}
+
+.book-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.book-card h3 {
+    font-size: 18px;
+    color: #626F47;
+    margin: 0 0 8px 0;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.book-card p {
+    font-size: 14px;
+    color: #444;
+    margin: 4px 0;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* Buton Grubu */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Genel Buton Stili */
+.btn {
+    flex: 1;
+    padding: 8px 0;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    user-select: none;
+    font-size: 14px;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+/* Güncelle butonu */
+.btn-update {
+    background-color: #A4B465;
+}
+
+.btn-update:hover {
+    background-color: #8a9a4f;
+}
+
+/* Sil butonu */
+.btn-delete {
+    background-color: #F0BB78;
+}
+
+.btn-delete:hover {
+    background-color: #d4a45a;
+}
+
+/* Form stili */
+.button-group form {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    width: 100%;
+}
+.btn {
+    flex: 1;
+    padding: 8px 12px;
+    min-width: 80px;
+    /* ... diğer stiller ... */
+}

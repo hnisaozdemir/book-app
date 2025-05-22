@@ -1,0 +1,109 @@
+/* Genel ayarlar */
+body {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #F5ECD5;
+    color:  #626F47;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #90a369;
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .seller-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.navbar .navbar-left span {
+    font-size: 16px;
+    color: black;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.navbar .nav-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+
+/* Content */
+.content {
+    padding: 40px;
+}
+
+.content h2 {
+    color: #626F47;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Satılan kitaplar listesi */
+.content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.content ul li {
+    background-color: #F0BB78;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    font-weight: 600;
+    color: #626F47;
+}
+
+/* Satılan kitap adı ve fiyat vurgusu */
+.content ul li span {
+    font-weight: 700;
+}
+
+/* Toplam kazanç paragrafı */
+.content p {
+    font-style: italic;
+    color: #323b0d;
+    margin-top: 20px;
+    font-size: 18px;
+}

@@ -17,11 +17,20 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
 
 // Admin Paneli
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/admin/product/edit/{id}', [AdminController::class, 'edit'])->name('admin.product.edit');
-Route::post('/admin/product/store', [AdminController::class, 'store'])->name('admin.product.store');
-Route::put('/admin/product/update/{id}', [AdminController::class, 'update'])->name('admin.product.update');
-Route::delete('/admin/product/delete/{id}', [AdminController::class, 'destroy'])->name('admin.product.delete');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/product/create', [AdminController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [AdminController::class, 'store'])->name('product.store');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+     Route::delete('/product/{id}', [AdminController::class, 'destroy'])->name('product.delete');
+    Route::get('/product/{id}/edit', [AdminController::class, 'edit'])->name('product.edit');
+    Route::put('/product/{id}', [AdminController::class, 'update'])->name('product.update');
+     Route::get('/sold-books', [AdminController::class, 'showSoldBooks'])->name('soldBooks');
+    Route::get('/available-books', [AdminController::class, 'showAvailableBooks'])->name('availableBooks');
+    Route::get('/earnings', [AdminController::class, 'earnings'])->name('earnings');
+
+    
+});
+
 
 
 

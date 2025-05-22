@@ -15,12 +15,15 @@
 
         </div>
         <div class="navbar-right">
-            <a href="#">Satıştaki Kitaplar</a>
-            <a href="#">Satılan Kitaplar</a>
-            <a href="#"><img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç</a>
+            <a href="{{ route('admin.availableBooks') }}">Satıştaki Kitaplar</a>
+        <a href="{{ route('admin.soldBooks') }}">Satılan Kitaplar</a>
+           <a href="/admin/earnings">
+    <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
+</a>
             <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
         </div>
     </nav>
+    <h2 class="page-title">Tüm Kitaplar</h2>
 
     <div class="content">
         <div class="product-list" id="productList">
@@ -32,11 +35,8 @@
                         <p>{{ $product->description }}</p>
                         <p class="product-price">{{ number_format($product->price, 2) }} ₺</p>
                         <div class="btn-group">
-                            <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-update">Güncelle</a>
-                            <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Emin misiniz?')">
-    @csrf
-    @method('DELETE')
-    <button class="btn btn-delete">Sil</button>
+                        
+                          
 </form>
                         </div>
                         
