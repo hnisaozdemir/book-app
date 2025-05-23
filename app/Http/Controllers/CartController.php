@@ -7,6 +7,8 @@ use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Order;
+use App\Models\OrderItems;
 
 class CartController extends Controller
 {
@@ -80,12 +82,11 @@ public function confirmPurchase(Request $request)
 {
     $request->validate([
         'card_number' => 'required|digits:16',
-        'expiry_date' => ['required', 'regex:/^(0[1-9]|1[0-2])\/\d{2}$/'], // MM/YY
+        'expiry_date' => ['required', 'regex:/^(0[1-9]|1[0-2])\/\d{2}$/'],
         'cvv' => 'required|digits:3',
     ]);
 
     $user = Auth::user();
-
     $cartItems = $user->cartItems()->with('product')->get();
 
     if ($cartItems->isEmpty()) {
@@ -93,14 +94,31 @@ public function confirmPurchase(Request $request)
     }
 
     DB::beginTransaction();
-    try {
-        // Burada gerçek ödeme entegrasyonu yapılabilir (şimdilik simülasyon)
 
+    try {
+        // Toplam fiyat hesapla
+        $totalPrice = $cartItems->sum(function ($item) {
+            return $item->product->price * $item->quantity;
+        });
+
+        // Siparişi kaydet
+        $order = Order::create([
+            'user_id' => $user->id,
+            'total_price' => $totalPrice,
+        ]);
+
+        // Sipariş ürünlerini kaydet
         foreach ($cartItems as $item) {
-            if ($item->product) {
-                $item->product->is_sold = 1;
-                $item->product->save();
-            }
+            OrderItems::create([
+                'order_id' => $order->id,
+                'product_id' => $item->product->id,
+                'quantity' => $item->quantity,
+                'price' => $item->product->price,
+            ]);
+
+            // Ürünü satıldı olarak işaretle
+            $item->product->is_sold = 1;
+            $item->product->save();
         }
 
         // Sepeti temizle
@@ -108,9 +126,7 @@ public function confirmPurchase(Request $request)
 
         DB::commit();
 
-        return redirect()->route('user.dashboard')->with('message', 'Ödeme başarılı, teşekkürler!');
-
-
+        return redirect()->route('user.orders')->with('success', 'Siparişiniz alındı, teşekkür ederiz!');
     } catch (\Exception $e) {
         DB::rollBack();
         return redirect()->back()->with('message', 'Ödeme sırasında bir hata oluştu: ' . $e->getMessage());
