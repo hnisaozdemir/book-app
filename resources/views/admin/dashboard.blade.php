@@ -7,22 +7,34 @@
    
 </head>
 <body>
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="{{ route('admin.profile') }}">
+            <img src="{{ asset('images/seller-icon.png') }}" alt="Admin" class="nav-icon seller-icon"> 
+        </a>
+        <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+    </div>
 
-    <nav class="navbar">
-        <div class="navbar-left">
-            <img src="{{ asset('images/seller-icon.png') }}" alt="Satıcı İkonu" class="seller-icon">
-           <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
-
-        </div>
-        <div class="navbar-right">
-            <a href="{{ route('admin.availableBooks') }}">Satıştaki Kitaplar</a>
+    <div class="navbar-right">
+    <div class="link-group close-group">
+        <img src="{{ asset('images/books.png') }}" alt="Book Icon" class="nav-icon book-icon">
+        <a href="{{ route('admin.availableBooks') }}">Satıştaki Kitaplar</a>
+        <span class="divider">|</span>
         <a href="{{ route('admin.soldBooks') }}">Satılan Kitaplar</a>
-           <a href="/admin/earnings">
-    <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
-</a>
-            <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
-        </div>
-    </nav>
+    </div>
+
+    <div class="link-group normal-group">
+        <img src="{{ asset('images/seller-orders.png') }}" alt="Orders Icon" class="nav-icon orders-icon">
+        <a href="{{ route('admin.orders') }}">Siparişler</a>
+        <a href="/admin/earnings">
+            <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
+        </a>
+        <a href="{{ route('logout') }}">
+            <img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap
+        </a>
+    </div>
+</div>
+</nav>
     <h2 class="page-title">Tüm Kitaplar</h2>
 
     <div class="content">

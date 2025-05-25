@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AdminOrderController;
 
 //  Giriş ve Kayıt İşlemleri
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
@@ -27,7 +28,18 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::get('/sold-books', [AdminController::class, 'showSoldBooks'])->name('soldBooks');
     Route::get('/available-books', [AdminController::class, 'showAvailableBooks'])->name('availableBooks');
     Route::get('/earnings', [AdminController::class, 'earnings'])->name('earnings');
+    
 });
+Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
+Route::post('/admin/orders/update-state/{orderItem}/{state}', [AdminOrderController::class, 'updateOrderState'])
+    ->name('admin.updateOrderState');
+    // Profil görüntüleme
+Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile');
+
+// Şifre güncelleme
+Route::post('/admin/update-password', [AdminController::class, 'updatePassword'])->name('admin.updatePassword');
+
+
 
 
 //  Kullanıcı Paneli
@@ -54,6 +66,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Siparişlerim
     Route::get('/orders', [UserController::class, 'myOrders'])->name('user.orders');
-   
+
+
+    // Kullanıcı profil sayfası
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/update-password', [UserController::class, 'updatePassword'])->name('user.updatePassword');
 
 });

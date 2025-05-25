@@ -10,14 +10,16 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-left">
-            <img src="{{ asset('images/seller-icon.jpg') }}" alt="Satıcı İkonu" class="seller-icon">
+            <a href="{{ route('admin.profile') }}">
+    <img src="{{ asset('images/seller-icon.png') }}" alt="Admin" class="nav-icon"> 
+</a>
             <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
         </div>
         <div class="navbar-right">
             <a href="{{ route('admin.dashboard') }}">Satıştaki Kitaplar</a>
             <a href="#">Satılan Kitaplar</a>
-            <a href="#"><img src="{{ asset('images/coins.jpg') }}" class="nav-icon">Kazanç</a>
-            <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.jpg') }}" class="nav-icon">Çıkış Yap</a>
+            <a href="#"><img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç</a>
+            <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
         </div>
     </nav>
 

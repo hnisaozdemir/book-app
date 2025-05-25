@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F5ECD5;
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #A4B465;
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.seller-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.navbar-left span {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar-right a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+    font-size: 15px;
+}
+
+.navbar-right a:hover {
+    color: #333;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    object-fit: contain;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #626F47;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.info-box p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #444;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline-color: #A4B465;
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    padding: 12px;
+    background-color: #A4B465;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #8fa75a;
+}
+
+p[style="color: red;"],
+p[style="color: green;"] {
+    text-align: center;
+    font-weight: bold;
+}

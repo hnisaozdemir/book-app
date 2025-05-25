@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Product;
+
 
 
 class UserController extends Controller
@@ -15,7 +17,31 @@ public function dashboard()
     $products = Product::where('is_sold', 0)->get();  // Satışta olan kitaplar
     return view('user.dashboard', compact('products'));
 }
+public function profile()
+{
+    // Kullanıcı bilgilerini view'a yolla
+    return view('user.profile');  // user/profile.blade.php dosyası olmalı
+}
+public function updatePassword(Request $request)
+{
+    $request->validate([
+        'current_password' => 'required',
+        'new_password' => 'required|string|min:8|confirmed',
+    ]);
 
+    $user = Auth::user();
+
+    // Mevcut şifre doğru mu?
+    if (!Hash::check($request->current_password, $user->password)) {
+        return back()->with('error', 'Mevcut şifreniz hatalı.');
+    }
+
+    // Şifreyi güncelle
+    $user->password = Hash::make($request->new_password);
+    $user->save();
+
+    return back()->with('success', 'Şifreniz başarıyla güncellendi.');
+}
      // Kullanıcı kitap listesi
     public function products()
     {

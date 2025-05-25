@@ -1,0 +1,194 @@
+body {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #F5ECD5;
+    color: #626F47;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #90a369;
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.seller-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.navbar-left span {
+    font-size: 16px;
+    color: black;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar-right a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.order-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.order-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.order-card h3 {
+    margin-top: 0;
+    color: #2980b9;
+}
+
+.order-card p {
+    margin: 5px 0;
+    font-size: 15px;
+}
+
+.order-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.order-card ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Genel buton stilleri */
+.btn {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: white;
+}
+
+/* Hazırlanıyor butonu (örnek: mavi ton) */
+.btn-group form:first-child .btn {
+    background-color: #4A90E2; /* Mavi */
+}
+
+.btn-group form:first-child .btn:hover {
+    background-color: #357ABD;
+    transform: scale(1.05);
+}
+
+/* Kargoya Verildi butonu (örnek: yeşil ton) */
+.btn-group form:last-child .btn {
+    background-color: #7ED957; /* Yeşil */
+}
+
+.btn-group form:last-child .btn:hover {
+    background-color: #5CBF3A;
+    transform: scale(1.05);
+}
+
+/* Buton grubu düzeni */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+    .order-card {
+        padding: 15px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+.divider {
+    margin: 0 3px ;
+    color: black ;
+    font-weight: bold;
+}
+
+.link-group {
+    display: flex;
+    align-items: center;
+}
+
+.close-group a {
+    margin-right: 6px;
+    color: black;
+    font-weight: 100;
+    text-decoration: none;
+}
+.close-group a:last-child {
+    margin-right: 0;
+}
+.normal-group a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}

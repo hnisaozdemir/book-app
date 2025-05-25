@@ -2,13 +2,15 @@
 <html>
 <head>
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="{{ asset('css/userdashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/userdashboard.css')}}">
 </head>
 <body>
     
 <nav class="navbar">
     <div class="navbar-left">
-        <img src="{{ asset('images/seller-icon.png') }}" alt="Kullanıcı ikonu" class="seller-icon">
+              <a href="{{ route('user.profile') }}">
+    <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil İkonu">
+</a>
         <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
     </div>
     <div class="navbar-right">

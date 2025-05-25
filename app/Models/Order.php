@@ -14,14 +14,19 @@ class Order extends Model
         'total_price',
     ];
 
-    public function items()
-    {
-        return $this->hasMany(OrderItems::class);
-    }
+  public function items()
+{
+    return $this->hasMany(OrderItems::class, 'order_id');
+}
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+public function orderItems()
+{
+    return $this->hasMany(OrderItems::class);
+}
+
 }
 ?>

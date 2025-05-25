@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,30 @@ class AdminController extends Controller
         $products = Product::all();
         return view('admin.dashboard', compact('products'));
     }
+    public function showProfile()
+{
+    $admin = auth()->user(); // Giriş yapan admin
+    return view('admin.profile', compact('admin'));
+}
+
+public function updatePassword(Request $request)
+{
+    $request->validate([
+        'current_password' => 'required',
+        'new_password' => 'required|min:6|confirmed',
+    ]);
+
+    $admin = auth()->user();
+
+    if (!Hash::check($request->current_password, $admin->password)) {
+        return back()->with('error', 'Mevcut şifre yanlış.');
+    }
+
+    $admin->password = Hash::make($request->new_password);
+    $admin->save();
+
+    return back()->with('success', 'Şifreniz başarıyla güncellendi.');
+}
 
     public function store(Request $request)
     {

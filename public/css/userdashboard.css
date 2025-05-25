@@ -1,4 +1,4 @@
-
+/* Genel ayarlar */
 body {
     margin: 20px;
     font-family: Arial, sans-serif;
@@ -6,7 +6,7 @@ body {
     color:  #626F47;
 }
 
-
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -20,13 +20,12 @@ body {
     color: white;
 }
 
-
 .navbar-left {
     display: flex;
     align-items: center;
 }
 
-.seller-icon {
+.navbar .seller-icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -34,7 +33,7 @@ body {
     object-fit: cover;
 }
 
-.navbar-left span {
+.navbar .navbar-left span {
     font-size: 16px;
     color: black;
 }
@@ -46,7 +45,7 @@ body {
     flex-wrap: wrap;
 }
 
-.navbar-right a {
+.navbar a {
     color: black;
     text-decoration: none;
     font-weight: 500;
@@ -55,18 +54,19 @@ body {
     transition: color 0.3s ease;
 }
 
-.navbar-right a:hover {
+.navbar a:hover {
     color: white;
     cursor: pointer;
 }
 
-.nav-icon {
+.navbar .nav-icon {
     width: 18px;
     height: 18px;
     margin-right: 6px;
     object-fit: contain;
     vertical-align: middle;
 }
+
 
 h2 {
     margin-bottom: 15px;
@@ -355,5 +355,5 @@ h2 {
     margin-bottom: -20px;
     font-size: 24px;
     color: #374220;
-    font-weight: 600;
+    font-weight: 600;
 }
