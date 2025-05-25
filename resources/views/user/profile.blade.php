@@ -8,15 +8,15 @@
     <nav class="navbar">
         <div class="navbar-left">
                      <a href="{{ route('user.profile') }}">
-    <img src="{{ asset('images/user.png') }}" class="nav-icon" alt="Profil İkonu">
+    <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil İkonu">
 </a>
             <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
         </div>
         <div class="navbar-right">
-            <a href="{{ route('user.dashboard') }}"><img src="{{ asset('images/home.png') }}" class="nav-icon">Anasayfa</a>
+            <a href="{{ route('user.dashboard') }}"><img src="{{ asset('images/main-page.png') }}" class="nav-icon">Anasayfa</a>
             <a href="{{ route('user.orders') }}"><img src="{{ asset('images/orders.png') }}" class="nav-icon">Siparişlerim</a>
-            <a href="{{ route('user.cart') }}"><img src="{{ asset('images/cart.png') }}" class="nav-icon">Sepet</a>
-            <a href="{{ route('logout') }}"><img src="{{ asset('images/logout.png') }}" class="nav-icon">Çıkış Yap</a>
+            <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
+            <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
         </div>
     </nav>
 

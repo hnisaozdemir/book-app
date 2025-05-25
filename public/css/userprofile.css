@@ -1,14 +1,21 @@
 /* userprofile.css */
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #F5F5F5;
-    margin: 0;
-    padding: 0;
-    color: #333;
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    background-color: #F5ECD5;
+    color:  #626F47;
+    
 }
-
+h2,h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color:#626F47;
+    margin-bottom: 25px;
+    text-align: center;
+}
 .navbar {
+    height:40px;
     display: flex;
     justify-content: space-between;
     align-items: center;

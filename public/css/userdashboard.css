@@ -1,13 +1,15 @@
 /* Genel ayarlar */
 body {
-    margin: 20px;
+    margin: 0px;
     font-family: Arial, sans-serif;
     background-color: #F5ECD5;
     color:  #626F47;
+    
 }
 
 /* Navbar */
 .navbar {
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,11 +70,13 @@ body {
 }
 
 
-h2 {
-    margin-bottom: 15px;
-    color: #4a5320;
+h1,h2{
+    font-size: 28px;
+    font-weight: bold;
+    color:#626F47;
+    margin-bottom: 25px;
+    text-align: center;
 }
-
 .product-card {
     background-color: white;
     border: 1px solid #ccc;
@@ -215,7 +219,7 @@ h2 {
 .cart-title {
     font-size: 28px;
     font-weight: bold;
-    color: #4a5320;
+    color:#626F47;
     margin-bottom: 25px;
     text-align: center;
 }

@@ -1,13 +1,15 @@
 /* Genel ayarlar */
 body {
-    margin: 20px;
+    margin: 0px;
     font-family: Arial, sans-serif;
     background-color: #F5ECD5;
     color:  #626F47;
+    
 }
 
 /* Navbar */
 .navbar {
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -135,4 +137,9 @@ body {
     margin-right: 20px;
     display: flex;
     align-items: center;
+}
+h1,h2{
+    text-align: center;
+    margin-bottom: 30px;
+    color: #626F47;
 }

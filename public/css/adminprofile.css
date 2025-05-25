@@ -1,21 +1,25 @@
+/* userprofile.css */
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    font-family: Arial, sans-serif;
     background-color: #F5ECD5;
-    color: #333;
+    color:  #626F47;
+    
 }
 
 .navbar {
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #A4B465;
-    padding: 15px 30px;
+    background-color: #90a369;
+    padding: 10px 30px;
     position: sticky;
     top: 0;
     z-index: 1000;
     flex-wrap: wrap;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: white;
 }
 
 .navbar-left {
@@ -23,19 +27,17 @@ body {
     align-items: center;
 }
 
-.seller-icon {
+.navbar .seller-icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 12px;
+    margin-right: 10px;
     object-fit: cover;
-    border: 2px solid #fff;
 }
 
-.navbar-left span {
-    font-size: 18px;
-    color: #fff;
-    font-weight: 600;
+.navbar .navbar-left span {
+    font-size: 16px;
+    color: black;
 }
 
 .navbar-right {
@@ -45,95 +47,98 @@ body {
     flex-wrap: wrap;
 }
 
-.navbar-right a {
-    color: #fff;
+.navbar a {
+    color: black;
     text-decoration: none;
     font-weight: 500;
     display: flex;
     align-items: center;
     transition: color 0.3s ease;
-    font-size: 15px;
 }
 
-.navbar-right a:hover {
-    color: #333;
+.navbar a:hover {
+    color: white;
+    cursor: pointer;
 }
 
-.nav-icon {
-    width: 20px;
-    height: 20px;
+.navbar .nav-icon {
+    width: 18px;
+    height: 18px;
     margin-right: 6px;
     object-fit: contain;
+    vertical-align: middle;
 }
-
 .container {
-    max-width: 700px;
+    max-width: 600px;
     margin: 40px auto;
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
 }
 
-h1, h2 {
+h2,h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color:#626F47;
+    margin-bottom: 25px;
     text-align: center;
-    color: #626F47;
-    margin-bottom: 20px;
 }
+
 
 .info-box {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
+    background-color: #F0F0E8;
+    padding: 15px 20px;
+    border-radius: 6px;
     margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .info-box p {
-    font-size: 16px;
-    margin: 10px 0;
-    color: #444;
+    margin: 8px 0;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-label {
+form label {
     font-weight: 600;
-    margin-bottom: 4px;
-    color: #333;
+    color: #626F47;
 }
 
-input[type="password"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    outline-color: #A4B465;
+form input[type="password"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 6px;
+    border: 1.5px solid #A4B465;
+    border-radius: 4px;
     font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="password"]:focus {
+    border-color: #626F47;
+    outline: none;
 }
 
 button[type="submit"] {
-    padding: 12px;
-    background-color: #A4B465;
-    color: white;
+    margin-top: 15px;
+    background-color: #626F47;
+    color: #F5ECD5;
     border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
     transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 16px;
 }
 
 button[type="submit"]:hover {
-    background-color: #8fa75a;
+    background-color: #A4B465;
 }
 
-p[style="color: red;"],
-p[style="color: green;"] {
-    text-align: center;
-    font-weight: bold;
+p[style*="color: red;"], p[style*="color: green;"] {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 15px;
 }

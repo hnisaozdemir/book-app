@@ -1,11 +1,12 @@
 body {
-    margin: 20px;
+    margin: 0px;
     font-family: Arial, sans-serif;
     background-color: #F5ECD5;
     color: #626F47;
 }
 
 .navbar {
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,10 +69,12 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #2c3e50;
+    color: #626F47;
 }
 
 .order-card {
+    max-width: 100%; 
+    box-sizing: border-box;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -191,4 +194,17 @@ hr {
     margin-right: 20px;
     display: flex;
     align-items: center;
+}
+.content {
+    max-width: 1100px; 
+    margin: 0 auto;   
+    padding: 0 20px;   
+    box-sizing: border-box; 
+}
+h1,h2{
+    font-size: 28px;
+    font-weight: bold;
+    color:#626F47;
+    margin-bottom: 25px;
+    text-align: center;;
 }

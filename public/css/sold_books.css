@@ -1,13 +1,14 @@
 /* Genel ayarlar */
 body {
-    margin: 20px;
+    margin: 0px;
     font-family: Arial, sans-serif;
     background-color: #F5ECD5;
     color:  #626F47;
+    
 }
-
 /* Navbar */
 .navbar {
+    height:40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,4 +115,11 @@ body {
 .book-card p {
     font-size: 14px;
     color: #777b70;
+}
+h1,h2{
+    font-size: 28px;
+    font-weight: bold;
+    color:#626F47;
+    margin-bottom: 25px;
+    text-align: center;
 }

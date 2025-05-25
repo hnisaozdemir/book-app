@@ -1,4 +1,12 @@
+body {
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    background-color: #F5ECD5;
+    color:  #626F47;
+    
+}
 .navbar {
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
