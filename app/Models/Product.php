@@ -18,19 +18,21 @@ class Product extends Model
     {
         return $this->hasMany(OrderItems::class);
     }
-  protected $fillable = [
+protected $fillable = [
     'name',
     'description',
+    'author',
+    'type',
+    'publication_year',
+    'page_count',
     'price',
     'image',
-    'is_sold'
+    'is_sold',
 ];
-
-
 
 public function user()
 {
-    return $this->belongsTo(User::class, 'admin_id');
+    return $this->belongsTo(User::class);
 }
 
 

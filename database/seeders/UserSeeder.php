@@ -10,10 +10,25 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
+        User::query()->delete();
         // admin kullanıcısı
         User::create([
             'name' => 'Test admin',
             'email' => 'admin@example.com',
+            'password' => Hash::make('123456'),
+            'role' => 'admin',
+        ]);
+
+        User::create([
+            'name' => 'Admin Two',
+            'email' => 'admin2@example.com',
+            'password' => Hash::make('123456'),
+            'role' => 'admin',
+        ]);
+
+        User::create([
+            'name' => 'Admin Three',
+            'email' => 'admin3@example.com',
             'password' => Hash::make('123456'),
             'role' => 'admin',
         ]);

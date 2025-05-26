@@ -42,7 +42,7 @@ public function updatePassword(Request $request)
 
     public function store(Request $request)
     {
-        $imagePath = 'images/default-book.png'; // Varsayılan görsel
+        $imagePath = 'images/default-book.png'; 
 
         if ($request->hasFile('image')) {
             $filename = time() . '.' . $request->image->extension();
@@ -50,17 +50,22 @@ public function updatePassword(Request $request)
             $imagePath = 'images/' . $filename;
         }
 
-        Product::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'image' => $imagePath,
-            'is_sold' => 0,
-             'admin_id' => Auth::id(),
-        ]);
+    Product::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'author' => $request->author,
+        'type' => $request->type,
+        'publication_year' => $request->publication_year,
+        'page_count' => $request->page_count,
+        'price' => $request->price,
+        'image' => $imagePath,
+        'is_sold' => 0,
+    ]);
 
         return redirect()->back()->with('success', 'Kitap başarıyla eklendi.');
     }
+
+    
     public function destroy($id)
 {
     $product = Product::findOrFail($id);
@@ -79,12 +84,15 @@ public function update(Request $request, $id)
 
     $product->name = $request->input('name');
     $product->description = $request->input('description');
+    $product->author = $request->input('author');               // yeni
+    $product->type = $request->input('type');                   // yeni
+    $product->publication_year = $request->input('publication_year'); // yeni
+    $product->page_count = $request->input('page_count');       // yeni
     $product->price = $request->input('price');
 
-    // Yeni görsel yüklendiyse işle
     if ($request->hasFile('image')) {
         $image = $request->file('image');
-        $imagePath = $image->store('images', 'public'); // public/images klasörüne yükler
+        $imagePath = $image->store('images', 'public');
         $product->image = 'storage/' . $imagePath;
     }
 
