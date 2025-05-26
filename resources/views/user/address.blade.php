@@ -21,7 +21,15 @@
     </div>
     <div class="navbar-right">
         <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
-        <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
+
+<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+   style="font-size: 16px; display: flex; align-items: center; text-decoration: none; cursor: pointer;">
+    <img src="{{ asset('images/user-logout.png') }}" class="nav-icon" alt="Çıkış Yap İkonu">
+    <span style="margin-left: 5px;">Çıkış Yap</span>
+</a>
     </div>
 </nav>
 
