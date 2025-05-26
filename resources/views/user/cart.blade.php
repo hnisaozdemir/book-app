@@ -3,20 +3,15 @@
 <head>
     <title>Sepetim</title>
     <link rel="stylesheet" href="{{ asset('css/userdashboard.css') }}">
+
 </head>
 <body>
 
-@if (session('message'))
-    <div style="background-color: #d4edda; padding: 10px; margin-bottom: 15px; border: 1px solid #c3e6cb; color: #155724;">
-        {{ session('message') }}
-    </div>
-@endif
-
 <nav class="navbar">
     <div class="navbar-left">
-             <a href="{{ route('user.profile') }}">
-    <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil İkonu">
-</a>
+        <a href="{{ route('user.profile') }}">
+            <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil İkonu">
+        </a>
         <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
     </div>
     <div class="navbar-right">
@@ -28,6 +23,12 @@
 
 <div class="cart-container">
     <h2 class="cart-title">Sepetiniz</h2>
+
+    @if (session('message'))
+    <div class="session-message">
+        {{ session('message') }}
+    </div>
+    @endif
 
     @if($cartItems->count() == 0)
         <p class="empty-cart">Sepetinizde ürün yok.</p>
@@ -54,6 +55,8 @@
 
     <a href="{{ route('user.dashboard') }}" class="btn btn-view" style="margin-top: 15px;">Geri Dön</a>
 </div>
+
+
 
 </body>
 </html>

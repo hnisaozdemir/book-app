@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<!-- Navbar -->
+
 <nav class="navbar">
     <div class="navbar-left">
         <a href="{{ route('admin.profile') }}">
@@ -37,7 +37,7 @@
 </div>
 </nav>
 
-<!-- Content -->
+
 <div class="content">
     <h2>Siparişler</h2>
 

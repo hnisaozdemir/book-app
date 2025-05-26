@@ -110,16 +110,16 @@ public function edit($id)
         $products = Product::where('is_sold', 1)->get();
         return view('admin.sold_books', compact('products'));
     }
-public function create()
-{
-    return view('admin.products.create'); // Blade dosyanın yoluna göre ayarla
-}
- 
 public function earnings()
 {
     $soldProducts = Product::where('is_sold', 1)->get();
     $totalEarnings = $soldProducts->sum('price');
     return view('admin.earnings', compact('soldProducts', 'totalEarnings'));
 }
+public function showAddBookForm()
+{
+    return view('admin.add_book'); // Blade dosyanın yolu: resources/views/admin/add_book.blade.php
+}
+
 
 }

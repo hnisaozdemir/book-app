@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<!-- Navbar -->
+
 <nav class="navbar">
     <div class="navbar-left">
         <a href="{{ route('admin.profile') }}">
@@ -29,7 +29,6 @@
     </div>
 </nav>
 
-<!-- Content -->
 <div class="content">
     <div class="book-list">
         @if($products->where('is_sold', 0)->count())

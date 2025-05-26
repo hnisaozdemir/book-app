@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Satıcı Paneli</title>
     <link rel="stylesheet" href="{{ asset('css/admindashboard.css') }}">
-   
 </head>
 <body>
 <nav class="navbar">
@@ -16,81 +15,49 @@
     </div>
 
     <div class="navbar-right">
-    <div class="link-group close-group">
-        <img src="{{ asset('images/books.png') }}" alt="Book Icon" class="nav-icon book-icon">
-        <a href="{{ route('admin.availableBooks') }}">Satıştaki Kitaplar</a>
-        <span class="divider">|</span>
-        <a href="{{ route('admin.soldBooks') }}">Satılan Kitaplar</a>
-    </div>
-
-    <div class="link-group normal-group">
-        <img src="{{ asset('images/seller-orders.png') }}" alt="Orders Icon" class="nav-icon orders-icon">
-        <a href="{{ route('admin.orders') }}">Siparişler</a>
-        <a href="/admin/earnings">
-            <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
-        </a>
-        <a href="{{ route('logout') }}">
-            <img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap
-        </a>
-    </div>
-</div>
-</nav>
-    <h2 class="page-title">Tüm Kitaplar</h2>
-
-    <div class="content">
-        <div class="product-list" id="productList">
-            @foreach($products as $product)
-                <div class="product-card">
-                    <img src="{{ asset($product->image) }}" alt="Kitap Görseli" width="150">
-                    <div class="product-info">
-                        <h3>{{ $product->name }}</h3>
-                        <p>{{ $product->description }}</p>
-                        <p class="product-price">{{ number_format($product->price, 2) }} ₺</p>
-                        <div class="btn-group">
-                        
-                          
-</form>
-                        </div>
-                        
-                    </div>
-                </div>
-            @endforeach
+        <div class="link-group close-group">
+            <img src="{{ asset('images/books.png') }}" alt="Book Icon" class="nav-icon book-icon">
+            <a href="{{ route('admin.availableBooks') }}">Satıştaki Kitaplar</a>
+            <span class="divider">|</span>
+            <a href="{{ route('admin.soldBooks') }}">Satılan Kitaplar</a>
         </div>
 
-        <button class="add-product-btn" id="addProductBtn">+</button>
+        <div class="link-group normal-group">
+            <img src="{{ asset('images/seller-orders.png') }}" alt="Orders Icon" class="nav-icon orders-icon">
+            <a href="{{ route('admin.orders') }}">Siparişler</a>
+            <a href="/admin/earnings">
+                <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
+            </a>
+            <a href="{{ route('logout') }}">
+                <img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap
+            </a>
+        </div>
+    </div>
+</nav>
 
-        <form id="addProductForm" action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <label for="name">Kitap Başlığı</label>
-            <input type="text" name="name" id="name" required>
+<h2 class="page-title">Tüm Kitaplar</h2>
 
-            <label for="description">Açıklama</label>
-            <textarea name="description" id="description" rows="3" required></textarea>
-
-            <label for="price">Fiyat (₺)</label>
-            <input type="number" step="0.01" name="price" id="price" required>
-
-            <label for="image">Kitap Görseli (opsiyonel)</label>
-            <input type="file" name="image" id="image" accept="image/*">
-
-            <button type="submit">Kitap Ekle</button>
-        </form>
+<div class="content">
+    <div class="product-list" id="productList">
+        @foreach($products as $product)
+            <div class="product-card">
+                <img src="{{ asset($product->image) }}" alt="Kitap Görseli" width="150">
+                <div class="product-info">
+                    <h3>{{ $product->name }}</h3>
+                    <p>{{ $product->description }}</p>
+                    <p class="product-price">{{ number_format($product->price, 2) }} ₺</p>
+                </div>
+            </div>
+        @endforeach
     </div>
 
-    <script>
-        const addBtn = document.getElementById('addProductBtn');
-        const form = document.getElementById('addProductForm');
 
-        addBtn.addEventListener('click', () => {
-            if(form.style.display === 'flex') {
-                form.style.display = 'none';
-            } else {
-                form.style.display = 'flex';
-                form.scrollIntoView({behavior: 'smooth'});
-            }
-        });
-    </script>
-    <script>
+    <a href="{{ route('admin.add_books') }}" class="add-product-btn" id="addProductBtn">Kitap Ekle</a>
+
+</div>
+
+<script>
+
     function toggleUpdateForm(id) {
         const form = document.getElementById('updateForm-' + id);
         if (form.style.display === 'block') {

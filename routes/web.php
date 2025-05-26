@@ -28,17 +28,15 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::get('/sold-books', [AdminController::class, 'showSoldBooks'])->name('soldBooks');
     Route::get('/available-books', [AdminController::class, 'showAvailableBooks'])->name('availableBooks');
     Route::get('/earnings', [AdminController::class, 'earnings'])->name('earnings');
+     Route::get('/profile', [AdminController::class, 'showProfile'])->name('profile');
+    Route::post('/update-password', [AdminController::class, 'updatePassword'])->name('updatePassword');
+    Route::get('/add_books', [AdminController::class, 'showAddBookForm'])->name('add_books');
     
 });
 Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders');
 Route::post('/admin/orders/update-state/{orderItem}/{state}', [AdminOrderController::class, 'updateOrderState'])
     ->name('admin.updateOrderState');
-    // Profil görüntüleme
-Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile');
-
-// Şifre güncelleme
-Route::post('/admin/update-password', [AdminController::class, 'updatePassword'])->name('admin.updatePassword');
-
+ 
 
 
 

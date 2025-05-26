@@ -208,12 +208,13 @@ h1,h2{
 }
 /* --- SEPET KART TASARIMI --- */
 .cart-container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative; 
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 800px; 
+    margin: 40px auto 0 auto;
 }
 
 .cart-title {
@@ -361,3 +362,76 @@ h1,h2{
     color: #374220;
     font-weight: 600;
 }
+.alert {
+    position: fixed;    /* sayfaya göre sabit */
+    bottom: 20px;       /* sayfa altından 20px yukarıda */
+    left: 50%;          /* yatay ortala */
+    transform: translateX(-50%);
+    z-index: 1100;
+    width: auto;
+    max-width: 600px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 12px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 9999;
+    max-width: 90%;
+    text-align: center;
+}
+.session-message {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(21, 87, 36, 0.4);
+    max-width: 250px;
+    font-weight: 600;
+    z-index: 10;
+    text-align: center;
+}
+.form-container {
+            position: relative; /* Mesajın absolute konumlanabilmesi için */
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+.message-box {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 0 6px rgba(0,0,0,0.15);
+            background-color: #d4edda; /* Yeşil ton */
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            z-index: 100;
+        }

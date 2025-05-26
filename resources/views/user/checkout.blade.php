@@ -5,29 +5,29 @@
     <link rel="stylesheet" href="{{ asset('css/userdashboard.css') }}">
 </head>
 <body>
-@if (session('message'))
-    <div style="background-color: #f8d7da; padding: 10px; margin-bottom: 15px; border: 1px solid #f5c6cb; color: #721c24;">
-        {{ session('message') }}
-    </div>
-@endif
 
 <nav class="navbar">
     <div class="navbar-left">
-                 <a href="{{ route('user.profile') }}">
-    <img src="{{ asset('images/user.png') }}" class="nav-icon" alt="Profil İkonu">
-</a>
+        <a href="{{ route('user.profile') }}">
+            <img src="{{ asset('images/user.png') }}" class="nav-icon" alt="Profil İkonu">
+        </a>
         <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
     </div>
     <div class="navbar-right">
-    <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
-    <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
-
+        <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
+        <a href="{{ route('logout') }}"><img src="{{ asset('images/user-logout.png') }}" class="nav-icon">Çıkış Yap</a>
     </div>
 </nav>
 
 <h2 class="form-title">Satın Alma Bilgileri</h2>
 
 <div class="form-container">
+    @if (session('message'))
+        <div class="message-box">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <form action="{{ route('user.purchase.confirm') }}" method="POST">
         @csrf
         <div>
@@ -60,8 +60,6 @@
         </div>
     </form>
 </div>
-
-
 
 </body>
 </html>

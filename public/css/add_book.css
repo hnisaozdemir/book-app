@@ -1,0 +1,208 @@
+body {
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    background-color: #F5ECD5;
+    color:  #626F47;
+    
+}
+.navbar {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #90a369;
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.seller-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.navbar-left span {
+    font-size: 16px;
+    color: black;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar-right a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+/* Content Container */
+.content {
+    padding: 40px;
+    max-width: 600px;
+    margin: 30px auto 60px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #626F47;
+}
+
+/* Başlık */
+.content h2 {
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #626F47;
+    text-align: center;
+}
+
+/* Form Etiketleri ve Alanları */
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form input[type="file"] {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1.5px solid #A4B465;
+    border-radius: 5px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: #626F47;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #626F47;
+}
+
+/* Görsel Önizleme */
+form img {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Butonlar */
+.btn {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-add {
+    background-color:#4CAF50 ;
+    color: white;
+}
+
+.btn-add:hover {
+    background-color:#3e8e41 ;
+}
+
+.btn-delete {
+    background-color:#e74c3c;
+    color:white;
+
+}
+
+.btn-delete:hover {
+    background-color:#c0392b ;
+}
+
+/* Butonlar Kapsayıcı */
+form > div {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .content {
+        padding: 30px 20px;
+        margin: 20px 10px;
+    }
+
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .navbar-right {
+        gap: 10px;
+    }
+
+}
+h1,h2{
+    font-size: 28px;
+    font-weight: bold;
+    color:#626F47;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.alert {
+    padding: 12px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
