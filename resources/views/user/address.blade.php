@@ -14,16 +14,21 @@
 
 <nav class="navbar">
     <div class="navbar-left">
-                 <a href="{{ route('user.profile') }}">
-    <img src="{{ asset('images/user.png') }}" class="nav-icon" alt="Profil İkonu">
-</a>
-        <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+        <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
+        <span class="welcome-text">Hoş geldiniz, {{ Auth::user()->name }}</span>
+    </div>
     </div>
     <div class="navbar-right">
         <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
+                <a href="{{ route('user.profile') }}">
+            <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil">
+            <span>Profilim</span>
+        </a>
+
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
+
 
 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
    style="font-size: 16px; display: flex; align-items: center; text-decoration: none; cursor: pointer;">

@@ -7,9 +7,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-                     <a href="{{ route('user.profile') }}">
-    <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil İkonu">
-</a>
+        <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
             <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
         </div>
         <div class="navbar-right">

@@ -74,6 +74,11 @@ h2,h1 {
     object-fit: contain;
     vertical-align: middle;
 }
+.logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
 .container {
     max-width: 600px;
     margin: 40px auto;

@@ -57,7 +57,11 @@
                 </div>
             @endforeach
         @else
-            <p>Satışta kitap bulunmamaktadır.</p>
+                <div style="background-color: #fff3cd; border-radius: 10px; padding: 15px 20px; display: flex; align-items: center; font-family: Arial, sans-serif; justify-content:center; width:100%;">
+        <span style="font-size: 24px; margin-right: 10px;">🔔</span>
+        <span style="color: #856404;">Satışta hiç kitap bulunmamaktadır.</span>
+    </div>
+
         @endif
     </div>
 </div>

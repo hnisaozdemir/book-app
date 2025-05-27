@@ -1,49 +1,33 @@
+/* Genel ayarlar */
 body {
     margin: 0px;
     font-family: Arial, sans-serif;
     background-color: #F5ECD5;
-    color: #626F47;
-    /* Box sizing global olarak ekleyelim */
-    box-sizing: border-box;
+    color:  #626F47;
+    
 }
 
-*, *::before, *::after {
-    box-sizing: inherit;
-}
-
-/* Navbar zaten var, aynen kalsın */
+/* Navbar */
 .navbar {
-    height: 60px;
-    padding: 0 30px;          /* Yukarı ve aşağı boşluk sıfır */
+    height: 40px;
     display: flex;
     justify-content: space-between;
-    align-items: center;      /* Dikey ortala */
+    align-items: center;
     background-color: #90a369;
+    padding: 10px 30px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    color: white;
     flex-wrap: wrap;
-    line-height: 40px;        /* Metin ve içeriği tam ortalar */
+    color: white;
 }
 
-.navbar-left span {
-    font-size: 16px;
-    color: black;
-    margin: 0;               /* margin kaldırıldı */
-    padding: 0;
+.navbar-left {
+    display: flex;
+    align-items: center;
 }
 
-.nav-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 6px;
-    object-fit: contain;
-    vertical-align: middle;
-    display: inline-block;
-}
-
-.seller-icon {
+.navbar .seller-icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -51,7 +35,7 @@ body {
     object-fit: cover;
 }
 
-.navbar-left span {
+.navbar .navbar-left span {
     font-size: 16px;
     color: black;
 }
@@ -63,7 +47,7 @@ body {
     flex-wrap: wrap;
 }
 
-.navbar-right a {
+.navbar a {
     color: black;
     text-decoration: none;
     font-weight: 500;
@@ -72,145 +56,126 @@ body {
     transition: color 0.3s ease;
 }
 
-.navbar-right a:hover {
+.navbar a:hover {
     color: white;
     cursor: pointer;
 }
 
-
-/* Buraya yeni eklenen container sınıfı: */
+.navbar .nav-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+.logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
+/* Container */
 .container {
     max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 15px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-/* Sipariş kartlarını container içinde tut, taşmayı önle */
+/* Sayfa başlığı */
+.container h2 {
+    text-align: center;
+    color: #626F47;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+/* Sipariş Kartı */
 .order-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-    max-width: 100%;
-    word-wrap: break-word;
+    background-color: #fdfdfb;
+    border: 1px solid #d6ddb7;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .order-card:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
-.order-card h3 {
-    margin-top: 0;
-    color: #2980b9;
-}
-
+/* Sipariş Bilgileri */
 .order-card p {
-    margin: 5px 0;
-    font-size: 15px;
+    margin: 8px 0;
+    font-size: 16px;
 }
 
-.order-card ul {
-    list-style-type: disc;
-    padding-left: 20px;
+.order-card p strong {
+    color: #5f6f28;
+}
+
+/* Sipariş Durum Görseli */
+.order-card img {
+    display: block;
     margin-top: 10px;
+    width: 55px;
+}
+
+/* Ürünler Başlık */
+.order-card h4 {
+    margin-top: 20px;
+    color: #6c7a44;
+    font-size: 18px;
+    border-bottom: 1px solid #c7d0a4;
+    padding-bottom: 6px;
+}
+
+/* Ürün Listesi */
+.order-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
 }
 
 .order-card ul li {
+    padding: 8px 12px;
     margin-bottom: 8px;
-    font-size: 14px;
-}
-
-/* Butonlar ve diğer CSS’in aynen kalabilir */
-
-.btn {
-    padding: 8px 16px;
-    margin: 5px;
-    border: none;
+    background-color: #f0f3e8;
     border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    color: white;
-}
-
-.btn-group form:first-child .btn {
-    background-color: #4A90E2;
-}
-
-.btn-group form:first-child .btn:hover {
-    background-color: #357ABD;
-    transform: scale(1.05);
-}
-
-.btn-group form:last-child .btn {
-    background-color: #7ED957;
-}
-
-.btn-group form:last-child .btn:hover {
-    background-color: #5CBF3A;
-    transform: scale(1.05);
-}
-
-.btn-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
-}
-h1,h2{
-    font-size: 28px;
-    font-weight: bold;
-    color:#626F47;
-    margin-bottom: 25px;
-    text-align: center;
-}
-@media (max-width: 600px) {
-    .order-card {
-        padding: 15px;
-    }
-
-    .btn-group {
-        flex-direction: column;
-        gap: 8px;
-    }
-}
-
-.divider {
-    margin: 0 3px ;
-    color: black ;
-    font-weight: bold;
-}
-
-.link-group {
-    display: flex;
-    align-items: center;
-}
-
-.close-group a {
-    margin-right: 6px;
-    color: black;
-    font-weight: 100;
-    text-decoration: none;
-}
-
-.close-group a:last-child {
-    margin-right: 0;
-}
-
-.normal-group a {
-    color: black;
-    text-decoration: none;
+    font-size: 15.5px;
     font-weight: 500;
-    margin-right: 20px;
+    color: #333;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+
+.order-card ul li::before {
+    content: "";
+    margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-right {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .order-card {
+        padding: 20px;
+    }
+
+    .order-card ul li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

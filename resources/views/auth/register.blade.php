@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
 <body>
-    <h2>Kayıt Ol</h2>
+    <img src="{{ asset('images/login-logo.png') }}" class="logo" alt="Logo">
 
     @if ($errors->any())
         <div style="color:red;">

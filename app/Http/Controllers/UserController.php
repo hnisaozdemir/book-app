@@ -77,7 +77,11 @@ public function myOrders()
 {
     $user = Auth::user();
 
-    $orders = $user->orders()->with(['items.product'])->latest()->get();
+  
+    $orders = $user->orders()
+        ->with(['items.product'])
+        ->orderBy('id', 'desc')
+        ->get();
 
     return view('user.orders', compact('orders'));
 }

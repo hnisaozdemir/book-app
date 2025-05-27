@@ -102,10 +102,12 @@ public function confirmPurchase(Request $request)
         });
 
         // Siparişi kaydet
-        $order = Order::create([
-            'user_id' => $user->id,
-            'total_price' => $totalPrice,
-        ]);
+$order = Order::create([
+    'user_id' => $user->id,
+    'total_price' => $totalPrice,
+    'created_at' => now(),
+]);
+
 
         // Sipariş ürünlerini kaydet
         foreach ($cartItems as $item) {
@@ -114,6 +116,7 @@ public function confirmPurchase(Request $request)
                 'product_id' => $item->product->id,
                 'quantity' => $item->quantity,
                 'price' => $item->product->price,
+                
             ]);
 
             // Ürünü satıldı olarak işaretle

@@ -8,17 +8,20 @@
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-            <a href="{{ route('user.profile') }}">
-                <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil İkonu">
-            </a>
+            <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
             <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
         </div>
         <div class="navbar-right">
             <a href="{{ route('user.dashboard') }}"><img src="{{ asset('images/main-page.png') }}" class="nav-icon">Anasayfa</a>
             <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
+            <a href="{{ route('user.profile') }}">
+            <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil">
+            <span>Profilim</span>
+        </a>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
+
 
 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
    style="font-size: 16px; display: flex; align-items: center; text-decoration: none; cursor: pointer;">
@@ -34,7 +37,7 @@
         @forelse ($orders as $order)
             <div class="order-card">
                 <p><strong>Sipariş No:</strong> {{ $order->id }}</p>
-                <p><strong>Tarih:</strong> {{ $order->created_at->format('d.m.Y H:i') }}</p>
+                <p><strong>Tarih:</strong> {{ $order->created_at->format('d.m.Y') }}</p>
                 <p><strong>Toplam Tutar:</strong> {{ number_format($order->total_price, 2) }} ₺</p>
 
                 @php
@@ -61,7 +64,6 @@
                     @foreach ($order->items as $item)
                         <li>
                             {{ $item->product->name }} -
-                            {{ $item->quantity }} adet -
                             {{ number_format($item->price, 2) }} ₺
                         </li>
                     @endforeach
