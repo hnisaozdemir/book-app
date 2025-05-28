@@ -10,15 +10,16 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-left">
-            <a href="{{ route('admin.profile') }}">
-    <img src="{{ asset('images/seller-icon.png') }}" alt="Admin" class="nav-icon"> 
-</a>
-            <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+            <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
         </div>
         <div class="navbar-right">
             <a href="{{ route('admin.dashboard') }}">Satıştaki Kitaplar</a>
             <a href="{{ route('admin.soldBooks') }}">Satılan Kitaplar</a>
             <a href="{{ route('admin.earnings') }}"><img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç</a>
+            <a href="{{ route('admin.profile') }}">
+            <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil">
+            <span>Profilim</span>
+            </a>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>

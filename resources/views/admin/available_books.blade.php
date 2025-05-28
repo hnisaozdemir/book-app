@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <title>Satıştaki Kitaplar</title>
     <link rel="stylesheet" href="{{ asset('css/available_books.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
 
 <nav class="navbar">
     <div class="navbar-left">
-        <a href="{{ route('admin.profile') }}">
-            <img src="{{ asset('images/seller-icon.png') }}" alt="Admin" class="nav-icon"> 
-        </a>
-        <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+        <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
     </div>
     <div class="navbar-right">
         <a href="{{ route('admin.dashboard') }}">
@@ -22,6 +20,10 @@
         <a href="{{ route('admin.soldBooks') }}">Satılan Kitaplar</a>
         <a href="/admin/earnings">
             <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
+        </a>
+        <a href="{{ route('admin.profile') }}">
+            <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil">
+            <span>Profilim</span>
         </a>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
@@ -48,11 +50,12 @@
                     <div class="button-group">
                         <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-update">Güncelle</a>
 
-                        <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Emin misiniz?')" class="delete-form">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-delete" type="submit">Sil</button>
-                        </form>
+<form action="{{ route('admin.product.delete', $product->id) }}" method="POST" 
+      class="delete-form" data-product-name="{{ $product->name }}">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-delete" type="submit">Sil</button>
+</form>
                     </div>
                 </div>
             @endforeach
@@ -65,6 +68,49 @@
         @endif
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const deleteForms = document.querySelectorAll('form.delete-form');
+
+    deleteForms.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const productName = form.getAttribute('data-product-name');
+
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: `"${productName}" adlı ürünü silmek üzeresiniz!`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sil',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+
+
+    @if(session('deleted'))
+    Swal.fire({
+        icon: 'success',
+        title: 'Silindi!',
+        text: `"{{ session('deleted') }}" adlı kitap silindi.`,
+        timer: 2500,
+        timerProgressBar: true,
+        showConfirmButton: false,
+    });
+    @endif
+});
+</script>
+
 
 </body>
 </html>

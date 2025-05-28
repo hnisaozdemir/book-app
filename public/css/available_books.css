@@ -67,7 +67,11 @@ body {
     object-fit: contain;
     vertical-align: middle;
 }
-
+.logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}
 
 /* İçerik Alanı */
 .content {

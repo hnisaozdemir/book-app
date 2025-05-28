@@ -43,17 +43,16 @@ class LoginController extends Controller
         // Kullanıcı varsa ve şifre doğruysa
         if ($user && Hash::check($request->password, $user->password)) {
            $remember = $request->has('remember');
-        Auth::login($user, $remember);
+    Auth::login($user, $remember);
 
+    if ($user->role === 'admin') {
+        return redirect()->route('admin.dashboard')->with('show_welcome', true);
+    } elseif ($user->role === 'user') {
+        return redirect()->route('user.dashboard')->with('show_welcome', true);
+    } else {
+        return redirect()->route('home');
+    }
 
-            // Rol kontrolü
-            if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard'); // admin paneli
-            } elseif ($user->role === 'user') {
-                return redirect()->route('user.dashboard'); // kullanıcı paneli
-            } else {
-                return redirect()->route('home'); // varsayılan sayfa
-            }
         }
 
         // Hatalı giriş

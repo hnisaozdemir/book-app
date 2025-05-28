@@ -50,16 +50,24 @@ class CartController extends Controller
     }
 
     // Sepetten ürün sil
-    public function removeFromCart($id)
-    {
-        $userId = Auth::id();
+public function removeFromCart($id)
+{
+    $userId = Auth::id();
 
-        Cart::where('user_id', $userId)
-            ->where('product_id', $id)
-            ->delete();
+    $cartItem = Cart::where('user_id', $userId)
+                    ->where('product_id', $id)
+                    ->with('product')
+                    ->first();
 
-        return redirect()->route('user.cart')->with('message', 'Ürün sepetten silindi.');
+    if ($cartItem) {
+        $productName = $cartItem->product->name ?? 'Ürün';
+        $cartItem->delete();
+
+        return redirect()->route('user.cart')->with('message', "{$productName} sepetten silindi.");
     }
+
+    return redirect()->route('user.cart')->with('message', 'Ürün bulunamadı.');
+}
 
     // Checkout sayfası
     public function checkout()

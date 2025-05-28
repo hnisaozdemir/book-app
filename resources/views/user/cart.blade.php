@@ -4,13 +4,13 @@
     <title>Sepetim</title>
     <link rel="stylesheet" href="{{ asset('css/userdashboard.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </head>
 <body>
 
 <nav class="navbar">
     <div class="navbar-left">
 <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
-        <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
     </div>
     <div class="navbar-right">
         <a href="{{ route('user.dashboard') }}"><img src="{{ asset('images/main-page.png') }}" class="nav-icon">Anasayfa</a>
@@ -35,7 +35,7 @@
     <h2 class="cart-title">Sepetiniz</h2>
 
     @if (session('message'))
-    <div class="session-message">
+    <div class="toast-message">
         {{ session('message') }}
     </div>
     @endif
@@ -95,6 +95,15 @@
                 });
             });
         });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const toast = document.querySelector('.toast-message');
+        if (toast) {
+            setTimeout(() => {
+                toast.remove();
+            }, 4500); // Animasyon sonrası tamamen kaldır
+        }
     });
 </script>
 

@@ -9,7 +9,6 @@
     <nav class="navbar">
         <div class="navbar-left">
             <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
-            <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
         </div>
         <div class="navbar-right">
             <a href="{{ route('user.dashboard') }}"><img src="{{ asset('images/main-page.png') }}" class="nav-icon">Anasayfa</a>

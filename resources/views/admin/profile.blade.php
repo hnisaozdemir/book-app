@@ -7,10 +7,7 @@
 <body>
     <nav class="navbar">
     <div class="navbar-left">
-        <a href="{{ route('admin.profile') }}">
-    <img src="{{ asset('images/seller-icon.png') }}" alt="Admin" class="nav-icon"> 
-</a>
-        <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+        <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
     </div>
     <div class="navbar-right">
         <a href="{{ route('admin.dashboard') }}">Tüm Kitaplar</a>
@@ -20,6 +17,7 @@
        <a href="/admin/earnings">
             <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
         </a>
+        
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
@@ -32,44 +30,47 @@
     </div>
 </nav>
     <div class="container">
-        <h1>Profil Bilgileriniz</h1>
+    <h1>Profil Bilgileriniz</h1>
 
-        <div class="info-box">
-            <p><strong>Adı:</strong> {{ $admin->name }}</p>
-            <p><strong>Email:</strong> {{ $admin->email }}</p>
-            <p><strong>Hesap Oluşturulma Tarihi:</strong> {{ $admin->created_at->format('d.m.Y H:i') }}</p>
+    <div class="info-box">
+        <p><strong>Adı:</strong> {{ Auth::user()->name }}</p>
+        <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+        <p><strong>Hesap Oluşturulma Tarihi:</strong> {{ Auth::user()->created_at->format('d.m.Y H:i') }}</p>
+    </div>
+
+    <h2>Şifre Güncelle</h2>
+
+    @if (session('error'))
+        <div class="error-message">{{ session('error') }}</div>
+    @endif
+
+    @if (session('success'))
+        <div class="success-message">{{ session('success') }}</div>
+    @endif
+
+    @if ($errors->any())
+        <div class="error-message validation-errors">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
+    @endif
 
-        <h2>Şifre Güncelle</h2>
+    <form action="{{ route('user.updatePassword') }}" method="POST">
+        @csrf
+        <label for="current_password">Mevcut Şifre</label>
+        <input type="password" name="current_password" id="current_password" required>
 
-        @if (session('error'))
-            <p style="color: red;">{{ session('error') }}</p>
-        @endif
-        @if (session('success'))
-            <p style="color: green;">{{ session('success') }}</p>
-        @endif
-@if ($errors->any())
-    <div style="color: red;">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-        <form action="{{ route('admin.updatePassword') }}" method="POST">
-            @csrf
-            <label>Mevcut Şifre:</label><br>
-            <input type="password" name="current_password" required><br><br>
+        <label for="new_password">Yeni Şifre</label>
+        <input type="password" name="new_password" id="new_password" required>
 
-            <label>Yeni Şifre:</label><br>
-            <input type="password" name="new_password" required><br><br>
+        <label for="new_password_confirmation">Yeni Şifre Tekrar</label>
+        <input type="password" name="new_password_confirmation" id="new_password_confirmation" required>
 
-            <label>Yeni Şifre Tekrar:</label><br>
-            <input type="password" name="new_password_confirmation" required><br><br>
-
-            <button type="submit">Şifreyi Güncelle</button>
-        </form>
-    </div>
+        <button type="submit">Şifreyi Güncelle</button>
+    </form>
+</div>
 </body>
 </html>

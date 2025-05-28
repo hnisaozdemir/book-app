@@ -8,10 +8,11 @@
 <body>
 <nav class="navbar">
     <div class="navbar-left">
-        <a href="{{ route('admin.profile') }}">
-            <img src="{{ asset('images/seller-icon.png') }}" alt="Admin" class="nav-icon seller-icon"> 
-        </a>
-        <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+        <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
+
+        @if(session('show_welcome'))
+            <span class="welcome-text" id="welcome-message">Hoş geldiniz, {{ Auth::user()->name }}</span>
+        @endif
     </div>
 
     <div class="navbar-right">
@@ -28,15 +29,20 @@
             <a href="/admin/earnings">
                 <img src="{{ asset('images/coins.png') }}" class="nav-icon">Kazanç
             </a>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
+            <a href="{{ route('admin.profile') }}">
+                <img src="{{ asset('images/seller-icon.png') }}" class="nav-icon" alt="Profil">
+                <span>Profilim</span>
+            </a>
 
-<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-   style="font-size: 16px; display: flex; align-items: center; text-decoration: none; cursor: pointer;">
-    <img src="{{ asset('images/user-logout.png') }}" class="nav-icon" alt="Çıkış Yap İkonu">
-    <span style="margin-left: 5px;">Çıkış Yap</span>
-</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+               style="font-size: 16px; display: flex; align-items: center; text-decoration: none; cursor: pointer;">
+                <img src="{{ asset('images/user-logout.png') }}" class="nav-icon" alt="Çıkış Yap İkonu">
+                <span style="margin-left: 5px;">Çıkış Yap</span>
+            </a>
         </div>
     </div>
 </nav>
@@ -57,13 +63,29 @@
         @endforeach
     </div>
 
-
     <a href="{{ route('admin.add_books') }}" class="add-product-btn" id="addProductBtn">Kitap Ekle</a>
-
 </div>
 
+@if(session('show_welcome'))
 <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const welcomeMessage = document.getElementById('welcome-message');
+            if (welcomeMessage) {
+                welcomeMessage.style.transition = 'opacity 1s ease';
+                welcomeMessage.style.opacity = '0';
+                setTimeout(() => welcomeMessage.remove(), 1000);
+            }
+        }, 4000);
+    });
+</script>
 
+@php
+    session()->forget('show_welcome');
+@endphp
+@endif
+
+<script>
     function toggleUpdateForm(id) {
         const form = document.getElementById('updateForm-' + id);
         if (form.style.display === 'block') {

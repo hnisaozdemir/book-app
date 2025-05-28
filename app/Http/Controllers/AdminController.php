@@ -66,17 +66,12 @@ public function updatePassword(Request $request)
     }
 
     
-    public function destroy($id)
-{
+public function destroy($id) {
     $product = Product::findOrFail($id);
-    
-    if ($product->image !== 'images/default-book.png' && file_exists(public_path($product->image))) {
-        unlink(public_path($product->image));
-    }
-
+    $productName = $product->name;
     $product->delete();
 
-    return redirect()->back()->with('success', 'Kitap silindi.');
+    return redirect()->back()->with('deleted', $productName);
 }
 public function update(Request $request, $id)
 {

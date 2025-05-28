@@ -8,19 +8,23 @@
 
     <nav class="navbar">
         <div class="navbar-left">
-            <img src="{{ asset('images/seller-icon.png') }}" alt="Kullanıcı ikonu" class="seller-icon">
-            <span>Hoş geldiniz, {{ Auth::user()->name }}</span>
+           <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
         </div>
         <div class="navbar-right">
-            <a href="{{ route('user.cart') }}"><img src="{{ asset('images/shopping-cart.png') }}" class="nav-icon">Sepet</a>
+             @guest
+        <a href="{{ route('login') }}">Giriş Yap</a>
+    @endguest
+            @auth
+            <a href="{{ route('user.cart') }}"><img src="{{ asset('images/cart.png') }}" class="nav-icon">Sepet</a>
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
 
 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
    style="font-size: 16px; display: flex; align-items: center; text-decoration: none; cursor: pointer;">
-    <img src="{{ asset('images/user-logout.png') }}" class="nav-icon" alt="Çıkış Yap İkonu">
+    <img src="{{ asset('images/logout.png') }}" class="nav-icon" alt="Çıkış Yap İkonu">
     <span style="margin-left: 5px;">Çıkış Yap</span>
+    @endAuth
 </a>
         </div>
     </nav>

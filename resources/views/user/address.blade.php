@@ -15,7 +15,6 @@
 <nav class="navbar">
     <div class="navbar-left">
         <img src="{{ asset('images/logo.png') }}" class="logo" alt="Logo">
-        <span class="welcome-text">Hoş geldiniz, {{ Auth::user()->name }}</span>
     </div>
     </div>
     <div class="navbar-right">
