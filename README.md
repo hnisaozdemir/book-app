@@ -17,7 +17,7 @@ Bu proje [Laravel](https://laravel.com) PHP Framework kullanılarak geliştirilm
 
 ---
 
-## ⚙️ Kurulum Adımları
+##  Kurulum Adımları
 
 # 1. Projeyi Klonla
 git clone https://github.com/kullaniciAdi/proje-adi.git
@@ -31,12 +31,12 @@ npm install
 cp .env.example .env
 
 # .env dosyasını açıp aşağıdaki veritabanı ayarlarını yap
-# DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=veritabani_adi
-# DB_USERNAME=kullanici_adi
-# DB_PASSWORD=sifre
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=veritabani_adi
+DB_USERNAME=kullanici_adi
+DB_PASSWORD=sifre
 
 # 4. Uygulama Anahtarını Oluştur
 php artisan key:generate
